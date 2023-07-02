@@ -1,0 +1,187 @@
+.container-wrapper {
+  margin: 2em 6em;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  position: relative;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  // padding-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+
+  &-wrapper {
+    display: flex;
+    gap: 40px;
+  }
+
+  .buttons {
+    .btn-1 {
+      background: #edeef0;
+      border-radius: 4px;
+      font-size: 14px;
+      width: 133px;
+      margin-right: 20px;
+    }
+  }
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 0;
+  transition: 0.3s;
+  font-size: 17px;
+  // margin-bottom: 20px;
+  color: #8a8a8a;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  // background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  border-bottom: 1px solid #000000;
+  font-weight: 700;
+  color: #000000;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  // border: 1px solid #ccc;
+  border-top: none;
+}
+
+.profile-circle {
+  .circle-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+  }
+}
+
+.profile-name {
+  font-weight: 600;
+}
+
+.views {
+  font-size: 14px;
+  line-height: 18px;
+  color: #525252;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sm-box {
+  background: #edeef0;
+  border-radius: 2px;
+  padding: 5px 10px;
+}
+
+.right-details {
+  input {
+    border: none;
+    padding-bottom: 10px;
+    border-bottom: 0.4px solid #b8b8b8;
+    outline: none;
+    width: 310px;
+  }
+
+  p {
+    width: 310px;
+    margin-top: 43px;
+  }
+
+  .recommend-groups {
+    width: 310px;
+    margin-top: 43px;
+    h6 {
+      margin-bottom: 30px;
+      span {
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #000000;
+        margin-left: 10px;
+      }
+    }
+
+    .b-dge {
+      width: 90px;
+      padding: 5px 6px;
+      cursor: pointer;
+      text-align: center;
+      background: #edeef0;
+      border-radius: 14px;
+    }
+
+    .see-more {
+      a {
+        color: #2f6ce5;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.fa-location-dot,
+.fa-xmark {
+  position: absolute;
+  top: 4px;
+}
+
+.fa-xmark {
+  right: 0;
+}
+
+.location-input {
+  padding-left: 21px;
+}
+
+.dropdown {
+  button {
+    background: #f1f3f5;
+    color: black;
+    border: none;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .tab {
+    display: none;
+  }
+
+  .col-right {
+    display: none;
+  }
+
+  .container-wrapper {
+    margin: 0;
+  }
+
+  .posts{
+    display: flex !important;
+    padding: 0 40px;
+  }
+
+  .row-md{
+    padding: 0 40px;
+  }
+
+  .views{
+    display: none;
+  }
+}

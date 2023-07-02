@@ -1,0 +1,157 @@
+<nav class="header">
+  <div class="header-wrapper">
+    <div class="logo-div">
+      ATG.<span class="logo-span"
+        >W<img src="../../assets/images/Union 1.png" />RLD</span
+      >
+    </div>
+    <div class="search">
+      <i class="fas fa-search"></i>
+      <input
+        class="search-bar"
+        placeholder="Search here.."
+      />
+    </div>
+
+    <div class="account" *ngIf="!isLoggedIn">
+      <div
+        class="right-text"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Create account. <span>It's free!</span>
+      </div>
+
+      <div
+        class="right-text"
+        data-bs-toggle="modal"
+        (click)="toggleSignIn = true"
+        data-bs-target="#exampleModal"
+      >
+        <span class="log-in">Sign In</span>
+      </div>
+    </div>
+
+    <div class="account" *ngIf="isLoggedIn">
+      <div class="right-text" (click)="logout()">
+        <span class="log-in">Log Out</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div
+          class="btn-closed"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          #closeBtn
+          (click)="toggleSignIn = false"
+        >
+          <i class="fas fa-xmark"></i>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="row modal-row">
+          <div class="col-5 modal-left">
+            <h5 class="account-title">
+              {{ toggleSignIn ? "Sign In" : "Create Account" }}
+            </h5>
+
+            <form [formGroup]="form" (ngSubmit)="login()" *ngIf="toggleSignIn">
+              <div class="fields">
+                <input
+                  type="name"
+                  formControlName="username"
+                  class="w-100 email rounded-0"
+                  placeholder="Username"
+                />
+                <input
+                  type="password"
+                  formControlName="password"
+                  class="w-100 password rounded-0"
+                  placeholder="Password"
+                />
+              </div>
+              <button type="submit" class="create-acc-btn">Log In</button>
+            </form>
+
+            <form
+              [formGroup]="registerForm"
+              (ngSubmit)="register()"
+              *ngIf="!toggleSignIn"
+            >
+              <div class="fields">
+                <input
+                  type="name"
+                  formControlName="username"
+                  class="w-100 email rounded-0"
+                  placeholder="Username"
+                />
+
+                <input
+                  type="password"
+                  formControlName="password"
+                  class="w-100 password rounded-0"
+                  placeholder="Password"
+                />
+
+                <input
+                  type="password"
+                  formControlName="password2"
+                  class="w-100 password rounded-0"
+                  placeholder="Confirm password"
+                />
+
+                <input
+                  type="email"
+                  formControlName="email"
+                  class="w-100 password rounded-0"
+                  placeholder="Email"
+                />
+
+                <input
+                  type="text"
+                  formControlName="firstName"
+                  class="w-100 password rounded-0"
+                  placeholder="First Name"
+                />
+
+                <input
+                  type="text"
+                  formControlName="lastName"
+                  class="w-100 password rounded-0"
+                  placeholder="Last Name"
+                />
+              </div>
+
+              <button type="submit" class="create-acc-btn">
+                Create Account
+              </button>
+            </form>
+          </div>
+
+          <div class="col-7 modal-right">
+            <p *ngIf="!toggleSignIn">
+              Already have an account?
+              <span class="cursor-pointer" (click)="toggleSignIn = true"
+                >Sign In</span
+              >
+            </p>
+            <img src="../../assets/images/undraw_sign_up_n6im.svg" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

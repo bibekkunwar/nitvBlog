@@ -1,0 +1,191 @@
+.header {
+  height: 72px;
+  background: #ffffff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+  width: 100%;
+
+  &-wrapper {
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+
+    .logo-div {
+      color: #27a365;
+      font-size: 1.9rem;
+    }
+
+    .logo-span {
+      color: #5c5d5d;
+    }
+
+    .search {
+      position: relative;
+      .fa-magnifying-glass {
+        position: absolute;
+        top: 50%;
+        color: #7a7a7a;
+        transform: translateY(-50%);
+        left: 20px;
+        cursor: pointer;
+      }
+      &-bar {
+        width: 360px;
+        height: 42px;
+        background: #f2f2f2;
+        border-radius: 21px;
+        border: none;
+        padding: 0 45px;
+      }
+    }
+
+    .right-text {
+      cursor: pointer;
+      span {
+        font-weight: 700;
+        color: #2f6ce5;
+      }
+    }
+  }
+}
+
+input::placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  color: #5c5c5c;
+}
+
+.modal-dialog {
+  .modal-header {
+    padding: 0;
+    border: none;
+
+    .alert-text {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      color: #008a45;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .modal-body {
+    .account-title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 31px;
+      color: #000000;
+    }
+
+    .modal-row {
+      padding: 1px 47px;
+    }
+
+    .modal-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .create-acc-btn {
+        background: #2f6ce5;
+        border-radius: 20px;
+        width: 100%;
+        padding: 15px 10px;
+        color: white;
+        margin-top: 20px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        border: none;
+      }
+
+      .card {
+        &-text {
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 16px;
+          color: #000000;
+        }
+      }
+    }
+
+    .modal-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      position: relative;
+
+      span {
+        color: #2f6ce5;
+      }
+
+      img {
+        width: 86%;
+        margin-top: 78px;
+      }
+
+      .terms {
+        position: absolute;
+        bottom: 0;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 16px;
+        text-align: right;
+        letter-spacing: -0.008em;
+        color: #000000;
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+.account{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input {
+  padding: 10px;
+  background: #f7f8fa;
+  border: 1px solid #d9d9db;
+  border-radius: 2px 2px 0px 0px;
+}
+
+// .log-in{
+//   margin-left: 10px;
+// }
+
+// .w-450px {
+//   width: 446px;
+// }
+
+.firstname {
+  border-top-right-radius: 0;
+}
+.lastname {
+  border-top-left-radius: 0;
+}
+
+.btn-closed {
+  position: absolute;
+  right: 0;
+  top: -45px;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+@media (max-width: 991.98px) {
+  .header{
+    display: none;
+  }
+ }

@@ -1,0 +1,51 @@
+<!-- form to create a blog post-->
+<div class="container mt-3">
+  <h3>Add Blog</h3>
+  <hr>
+  <div class="row">
+    <div class="col-md-12 text-center"></div>
+  </div>
+</div>
+
+<form class="container mt-3 mb-2" [formGroup]="postForm">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input
+      type="text"
+      id="title"
+      formControlName="blog_title"
+      class="form-control"
+      required
+    />
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="summary">Summary</label>
+    <input
+      type="text"
+      id="summary"
+      formControlName="blog_summary"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="form-group mb-4">
+    <label for="blog_header_image">Insert header image</label>
+    <input
+      type="file"
+      id="blog_header_image"
+      formControlName="blog_header_image"
+      class="form-control"
+      required
+    />
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="description">Description</label>
+    <ckeditor [editor]="Editor" formControlName="blog_content"></ckeditor>
+  </div>
+
+  <button type="submit" (click)="addPost()" class="btn btn-primary mb-4">
+    {{ postId ? "Update" : "Submit" }}
+  </button>
+</form>

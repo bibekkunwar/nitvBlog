@@ -1,0 +1,175 @@
+<div class="container-lg">
+  <div class="container-wrapper">
+    <div class="tab">
+      <div class="tab-wrapper gap-lg-3">
+        <button class="tablinks active" (click)="openCity($event, 'All Posts')">
+          All Posts
+        </button>
+        <button class="tablinks" (click)="openCity($event, 'mypost')">
+          My Post
+        </button>
+      </div>
+
+      <div class="buttons d-lg-flex">
+        <button class="btn-1" [routerLink]="['/createpost']">
+          Write a Post
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="d-flex align-items-center justify-content-between posts mt-3 d-none"
+    >
+      <strong>Posts</strong>
+
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Filter
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">All</a></li>
+          <li>
+            <a class="dropdown-item" href="#">My Post</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row mt-5 row-md">
+      <div
+        class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-7 col-xxl-7 col-left"
+      >
+        <div id="All Posts" class="tabcontent">
+          <div
+            class="card mb-3"
+            *ngFor="
+              let item of allMighty
+                | paginate
+                  : {
+                      itemsPerPage: pageSize,
+                      currentPage: pageNo,
+                      totalItems: totalCount
+                    }
+            "
+            [routerLink]="['/blog-detail', item.id]"
+          >
+            <img src="{{ item.blog_header_image }}" />
+            <div class="card-body">
+              <h6>✍️ Article</h6>
+              <h5 class="card-title mt-3">
+                {{ item.blog_title }}
+              </h5>
+              <p class="card-text">
+                {{ item.blog_summary }}
+              </p>
+
+              <div
+                class="mt-5 d-flex align-items-center justify-content-between"
+              >
+                <div class="d-flex align-items-center gap-3">
+                  <div class="profile-circle">
+                    <img
+                      src="{{ item.blog_header_image }}"
+                      class="circle-img"
+                    />
+                  </div>
+                  <div class="d-flex flex-column">
+                    <div class="d-flex flex-column">
+                      <div class="profile-name">Prakash Magar</div>
+                      <div>1.4K views</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-5">
+                  <div class="views">
+                    <i class="fas fa-eye"></i>
+                    <span class="ml-3">1.4K views</span>
+                  </div>
+
+                  <div class="sm-box">
+                    <i class="fas fa-share-nodes"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <pagination-controls
+            (pageChange)="pageNo = $event; getList(pageNo, pageSize)"
+          ></pagination-controls>
+        </div>
+
+        <div id="mypost" class="tabcontent">
+          <div
+            class="card mb-3"
+            *ngFor="
+              let item of myposts
+                | paginate
+                  : {
+                      itemsPerPage: pageSize,
+                      currentPage: pageNo,
+                      totalItems: totalCountForMyPost
+                    }
+            "
+            [routerLink]="['/blog-detail', item.id]"
+          >
+            <img src="{{ item.blog_header_image }}" />
+            <div class="card-body">
+              <h6>✍️ Article</h6>
+              <h5 class="card-title mt-3">
+                {{ item.blog_title }}
+              </h5>
+              <p class="card-text">
+                {{ item.blog_summary }}
+              </p>
+
+              <div
+                class="mt-5 d-flex align-items-center justify-content-between"
+              >
+                <div class="d-flex align-items-center gap-3">
+                  <div class="profile-circle">
+                    <img
+                      src="{{ item.blog_header_image }}"
+                      class="circle-img"
+                    />
+                  </div>
+                  <div class="d-flex flex-column">
+                    <div class="d-flex flex-column">
+                      <div class="profile-name">Prakash Magar</div>
+                      <div>1.4K views</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-center gap-3">
+                  <div
+                    class="sm-box cursor-pointer"
+                    (click)="deletePost(item.id)"
+                  >
+                    <i class="fa-solid fa-trash text-danger"></i>
+                  </div>
+                  <div
+                    class="sm-box cursor-pointer"
+                    [routerLink]="['/updatepost', item.id]"
+                  >
+                    <i class="fa-solid fa-pen-to-square text-primary"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <pagination-controls
+            (pageChange)="pageNo = $event; getMyPosts()"
+          ></pagination-controls> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
