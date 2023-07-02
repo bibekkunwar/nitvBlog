@@ -91,6 +91,7 @@ export class BlogComponent implements AfterViewInit, OnInit {
         next: (response) => {
           alert('deleted successfully');
           this.getList(this.pageNo,this.pageSize)
+          this.router.navigateByUrl("['/bloglist']");
         },
         error: (error: HttpErrorResponse) => {
           alert(error.error.status);

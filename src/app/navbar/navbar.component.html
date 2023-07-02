@@ -1,8 +1,8 @@
 <nav class="header">
   <div class="header-wrapper">
     <div class="logo-div">
-      ATG.<span class="logo-span"
-        >W<img src="../../assets/images/Union 1.png" />RLD</span
+      <span class="logo-span">
+        <img class="logo-img" src="https://www.newitventure.com/wp-content/uploads/2018/08/logo-new1.png" /></span
       >
     </div>
     <div class="search">
@@ -39,6 +39,8 @@
     </div>
   </div>
 </nav>
+
+
 
 <!-- Modal -->
 <div
@@ -98,6 +100,17 @@
                   class="w-100 email rounded-0"
                   placeholder="Username"
                 />
+                <div
+                    *ngIf="
+                      registerForm.get('username')?.invalid &&
+                      (registerForm.get('username')?.dirty ||
+                        registerForm.get('username')?.touched ||
+                        registerForm.get('username == ` `'))
+                    "
+                    class="text-danger"
+                  >
+                    Invalid username.
+                  </div>
 
                 <input
                   type="password"
@@ -106,12 +119,35 @@
                   placeholder="Password"
                 />
 
+                <div
+                    *ngIf="
+                      registerForm.get('password')?.invalid &&
+                      (registerForm.get('password')?.dirty ||
+                        registerForm.get('password')?.touched)
+                    "
+                    class="text-danger"
+                  >
+                    This password is too short. It must contain at least 8
+                    characters.
+                  </div>
+
                 <input
                   type="password"
                   formControlName="password2"
                   class="w-100 password rounded-0"
                   placeholder="Confirm password"
                 />
+                <div
+                *ngIf="
+                  registerForm.get('password')?.invalid &&
+                  (registerForm.get('password')?.dirty ||
+                    registerForm.get('password')?.touched)
+                "
+                class="text-danger"
+              >
+                This password is too short. It must contain at least 8
+                characters.
+              </div>
 
                 <input
                   type="email"

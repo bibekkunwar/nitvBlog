@@ -45,7 +45,7 @@
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  // background-color: #ddd;
+  background-color: #ddd;
 }
 
 /* Create an active/current tablink class */
@@ -159,29 +159,29 @@
   }
 }
 
-@media (max-width: 991.98px) {
-  .tab {
-    display: none;
-  }
+// @media (max-width: 991.98px) {
+//   .tab {
+//     display: none;
+//   }
 
-  .col-right {
-    display: none;
-  }
+//   .col-right {
+//     display: none;
+//   }
 
-  .container-wrapper {
-    margin: 0;
-  }
+//   .container-wrapper {
+//     margin: 0;
+//   }
 
-  .posts{
-    display: flex !important;
-    padding: 0 40px;
-  }
+//   .posts{
+//     display: flex !important;
+//     padding: 0 40px;
+//   }
 
-  .row-md{
-    padding: 0 40px;
-  }
+//   .row-md{
+//     padding: 0 40px;
+//   }
 
-  .views{
-    display: none;
-  }
-}
+//   .views{
+//     display: none;
+//   }
+// }

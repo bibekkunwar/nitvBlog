@@ -43,6 +43,10 @@ export class BlogHomeComponent implements OnInit {
     this.allMighty = [];
     this._apiService.getBlogList(pageNo, pageSize).subscribe((res: any) => {
       this.totalCount = res.count;
+
+      this.totalPages = Math.ceil(this.totalCount / this.pageSize);
+      this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
+
       const filteredList = res.results;
       console.log(filteredList)
       filteredList.map((item: any) => {
@@ -54,4 +58,17 @@ export class BlogHomeComponent implements OnInit {
       });
     });
   }
+
+  changePage(page: number) {
+    if (page < 1 || page > this.totalPages) {
+      return;
+    }
+    this.currentPage = page;
+    this.getList(page, this.pageSize);
+  }
+
+  goToLogin() {
+    alert('Login to view the full post')
+  }
+
 }

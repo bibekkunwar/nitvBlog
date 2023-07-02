@@ -185,7 +185,17 @@ input {
 
 
 @media (max-width: 991.98px) {
-  .header{
+  .search{
     display: none;
   }
+
+  .logo-img{
+    width: 7rem;
+  }
+
+  .account{
+    padding: 5px;
+    margin: 0 1rem;
+  }
+
  }

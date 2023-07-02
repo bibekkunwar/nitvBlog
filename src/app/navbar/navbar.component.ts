@@ -131,4 +131,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('/')
     this.isLoggedIn=false
   }
+
+
+
 }
