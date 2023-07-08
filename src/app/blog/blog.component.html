@@ -10,24 +10,18 @@
         </button>
       </div>
 
-      <div class="buttons d-lg-flex" >
+      <div class="buttons d-lg-flex">
         <button class="btn-1" [routerLink]="['/createpost']">
           Write a Post
         </button>
       </div>
     </div>
 
-    <div
-      class="d-flex align-items-center justify-content-center posts mt-3 d-none">
+    <div class="d-flex align-items-center justify-content-center posts mt-3 d-none">
       <strong>Posts</strong>
 
       <div class="dropdown">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         </button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">All</a></li>
@@ -39,12 +33,9 @@
     </div>
 
     <div class="row mt-5 row-md d-flex justify-content-center">
-      <div
-        class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-7 col-xxl-7 col-left"
-      >
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-7 col-xxl-7 col-left">
         <div id="All Posts" class="tabcontent">
-          <div class="card mb-5 cursor-pointer " id="blogCard"
-            *ngFor="
+          <div class="card mb-5 cursor-pointer " id="blogCard" *ngFor="
               let item of allMighty
                 | paginate
                   : {
@@ -52,9 +43,7 @@
                       currentPage: pageNo,
                       totalItems: totalCount
                     }
-            "
-            [routerLink]="['/blog-detail', item.id]"
-            >
+            " [routerLink]="['/blog-detail', item.id]">
             <img src="{{ item.blog_header_image }}" />
             <div class="card-body">
               <h6>✍️ Article</h6>
@@ -65,37 +54,26 @@
                 {{ item.blog_summary }}
               </p>
 
-              <div
-                class="mt-5 d-flex align-items-center justify-content-between"
-              >
+              <div class="mt-5 d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-3">
                   <div class="profile-circle">
-                    <img
-                      src="{{ item.blog_header_image }}"
-                      class="circle-img"
-                    />
+                    <img src="{{ item.blog_header_image }}" class="circle-img" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <pagination-controls
-            (pageChange)="pageNo = $event; getList(pageNo, pageSize)"
-          ></pagination-controls>
+          <pagination-controls (pageChange)="pageNo = $event; getList(pageNo, pageSize)"></pagination-controls>
         </div>
 
 
 
         <div id="mypost" class="tabcontent">
-          <div
-            class="card mb-3"
-            *ngFor="
+          <div class="card mb-3" *ngFor="
               let item of myposts
 
-            "
-            [routerLink]="['/blog-detail', item.id]"
-          >
+            " [routerLink]="['/blog-detail', item.id]">
             <img src="{{ item.blog_header_image }}" />
             <div class="card-body">
               <h6>✍️ Article</h6>
@@ -106,30 +84,19 @@
                 {{ item.blog_summary }}
               </p>
 
-              <div
-                class="mt-5 d-flex align-items-center justify-content-between"
-              >
+              <div class="mt-5 d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-3">
                   <div class="profile-circle">
-                    <img
-                      src="{{ item.blog_header_image }}"
-                      class="circle-img"
-                    />
+                    <img src="{{ item.blog_header_image }}" class="circle-img" />
                   </div>
 
                 </div>
 
                 <div class="d-flex align-items-center gap-3">
-                  <div
-                    class="sm-box cursor-pointer"
-                    (click)="deletePost(item.id)"
-                  >
+                  <div class="sm-box cursor-pointer" (click)="deletePost(item.id)">
                     <i class="fa-solid fa-trash text-danger"></i>
                   </div>
-                  <div
-                    class="sm-box cursor-pointer"
-                    [routerLink]="['/updatepost', item.id]"
-                  >
+                  <div class="sm-box cursor-pointer" [routerLink]="['/updatepost', item.id]">
                     <i class="fa-solid fa-pen-to-square text-primary"></i>
                   </div>
                 </div>
@@ -138,7 +105,7 @@
 
 
           </div>
-<!--
+          <!--
           <pagination-controls
             (pageChange)="pageNo = $event; getMyPosts()"
           ></pagination-controls> -->

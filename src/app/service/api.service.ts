@@ -10,9 +10,9 @@ export class ApiService {
 
   accessToken: string = '';
   refreshKeyToken: string = '';
-  isAuthenticated=new BehaviorSubject(false)
+  isAuthenticated = new BehaviorSubject(false)
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) { }
 
   refreshToken(): Observable<any> {
     const refreshTokenUrl =
@@ -24,7 +24,7 @@ export class ApiService {
     return this.http.post<any>(refreshTokenUrl, payload);
   }
 
-  authenticate(value:boolean){
+  authenticate(value: boolean) {
     this.isAuthenticated.next(value)
   }
 
@@ -67,8 +67,14 @@ export class ApiService {
 
   // data = localStorage.getItem('refresh');
 
-  refreshKeyGeneerator(data: any) {
-    return this.http.post(`${this.apiUrl}/login/refresh`, data);
+  refreshKeyGeneerator(refresh: string) {
+    const data = {
+      refresh: refresh,
+    };
+    return this.http.post<any>(`${this.apiUrl}/login/refresh/`, data).subscribe(data => {
+      // console.log(data);
+      localStorage.setItem('auth_token', JSON.stringify(data));
+    });
   }
 
   getPostDetailById(postId: number) {

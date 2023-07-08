@@ -19,17 +19,17 @@ export class BlogComponent implements AfterViewInit, OnInit {
   pageSize: number = 10;
   totalPagesArray: number[] = [];
   totalCount!: number;
-  totalCountForMyPost!:number
+  totalCountForMyPost!: number
   userId!: number;
   myposts: any[] = [];
 
-  constructor(private _apiService: ApiService,private router:Router) {
-    if(localStorage.getItem('auth_token')){
-/* The line `this._apiService.authenticate(true)` is calling a method `authenticate()` from the
-`_apiService` instance. It is passing `true` as an argument to the `authenticate()` method. The
-purpose of this line is to authenticate the user by setting a flag or updating the authentication
-status in the `_apiService`. The exact implementation and functionality of the `authenticate()`
-method would be defined in the `ApiService` class. */
+  constructor(private _apiService: ApiService, private router: Router) {
+    if (localStorage.getItem('auth_token')) {
+      /* The line `this._apiService.authenticate(true)` is calling a method `authenticate()` from the
+      `_apiService` instance. It is passing `true` as an argument to the `authenticate()` method. The
+      purpose of this line is to authenticate the user by setting a flag or updating the authentication
+      status in the `_apiService`. The exact implementation and functionality of the `authenticate()`
+      method would be defined in the `ApiService` class. */
       this._apiService.authenticate(true)
       const encodedToken = JSON.parse(localStorage.getItem('auth_token') || '');
       const decodedToken: DecodedType = jwt_decode(encodedToken.refresh);
@@ -86,19 +86,24 @@ method would be defined in the `ApiService` class. */
     );
     console.log(this.myposts)
 
-    this.totalCountForMyPost=this.myposts.length
+    this.totalCountForMyPost = this.myposts.length
   }
 
 
 
 
   deletePost(id: number) {
+    if (localStorage.getItem('auth_token')) {
+      const auth_token = JSON.parse(localStorage.getItem('auth_token') || '');
+      const refresh_token = auth_token.refresh as string;
+      this._apiService.refreshKeyGeneerator(refresh_token);
+    }
     const confirmed = confirm('are you sure? delete!!!');
     if (confirmed) {
       this._apiService.deletePost(id).subscribe({
         next: (response) => {
           alert('deleted successfully');
-          this.getList(this.pageNo,this.pageSize)
+          this.getList(this.pageNo, this.pageSize)
           this.router.navigateByUrl("['/bloglist']");
         },
         error: (error: HttpErrorResponse) => {
