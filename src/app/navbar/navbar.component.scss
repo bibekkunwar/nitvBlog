@@ -111,33 +111,6 @@ input::placeholder {
       }
     }
 
-    .modal-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      position: relative;
-
-      span {
-        color: #2f6ce5;
-      }
-
-      img {
-        width: 86%;
-        margin-top: 78px;
-      }
-
-      .terms {
-        position: absolute;
-        bottom: 0;
-        font-weight: 500;
-        font-size: 11px;
-        line-height: 16px;
-        text-align: right;
-        letter-spacing: -0.008em;
-        color: #000000;
-        opacity: 0.6;
-      }
-    }
   }
 }
 
@@ -154,13 +127,10 @@ input {
   border-radius: 2px 2px 0px 0px;
 }
 
-// .log-in{
-//   margin-left: 10px;
-// }
+.log-in{
+  margin-left: 10px;
+}
 
-// .w-450px {
-//   width: 446px;
-// }
 
 .firstname {
   border-top-right-radius: 0;

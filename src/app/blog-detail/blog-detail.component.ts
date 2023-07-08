@@ -25,7 +25,12 @@ export class BlogDetailComponent {
 
   viewPost() {
     this._apiService.getPostDetailById(this.postId).subscribe((res: any) => {
-      this.viewAll = res;
+
+      const encodedUrl = res.blog_header_image?.split('media/')[1];
+        const decodedUrl = decodeURIComponent(encodedUrl);
+        const modifiedUrl = decodedUrl.replace('%3A', ':');
+
+      this.viewAll = {...res, blog_header_image:modifiedUrl };
     });
   }
 }

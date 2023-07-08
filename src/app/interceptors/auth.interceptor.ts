@@ -17,7 +17,8 @@ export class AuthInterceptor implements HttpInterceptor {
   refreshKeyToken!: string;
   refresh = false;
   IgnoredUrls = [`${this._demoService.apiUrl}/list/`,`${this._demoService.apiUrl}/register/`];
-  constructor(private _demoService: ApiService) {}
+  constructor(private _demoService: ApiService,
+    private http: HttpClient) {}
 
   getAuthToken() {
     if (localStorage.getItem('auth_token')) {
@@ -61,26 +62,26 @@ export class AuthInterceptor implements HttpInterceptor {
               console.log('refresh', res);
             });
 
-          // return this.http
-          //   .post(
-          //     'https://blog-api-django-rest-framework-production.up.railway.app/api/v1/login/refresh/',
-          //     data,
-          //     { withCredentials: true }
-          //   )
-          //   .pipe(
-          //     switchMap((res: any) => {
-          //       console.log('switchmap', res);
-          //       this.accessToken = res.token;
+          return this.http
+            .post(
+              'https://blog-api-django-rest-framework-production.up.railway.app/api/v1/login/refresh/',
+              data,
+              { withCredentials: true }
+            )
+            .pipe(
+              switchMap((res: any) => {
+                console.log('switchmap', res);
+                this.accessToken = res.token;
 
-          //       return next.handle(
-          //         request.clone({
-          //           setHeaders: {
-          //             Authorization: `Bearer ${this.accessToken}`,
-          //           },
-          //         })
-          //       );
-          //     })
-          //   );
+                return next.handle(
+                  request.clone({
+                    setHeaders: {
+                      Authorization: `Bearer ${this.accessToken}`,
+                    },
+                  })
+                );
+              })
+            );
         }
         this.refresh = false;
         return throwError(() => err);
@@ -88,5 +89,4 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
 
-  refreshToken() {}
 }

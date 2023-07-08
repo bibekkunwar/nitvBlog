@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog-home',
@@ -7,6 +9,7 @@ import { ApiService } from '../service/api.service';
   styleUrls: ['./blog-home.component.scss'],
 })
 export class BlogHomeComponent implements OnInit {
+
   allMighty: any[] = [];
   pageNo: number = 1;
   currentPage: number = 1;
@@ -15,9 +18,10 @@ export class BlogHomeComponent implements OnInit {
   totalPagesArray: number[] = [];
   totalCount!: number;
 
-  constructor(private _apiService: ApiService) {}
+  constructor(private _apiService: ApiService, private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+    localStorage.clear();
     this.getList(this.pageNo, this.pageSize);
     this.openTab(undefined,'All Posts')
   }
@@ -45,6 +49,7 @@ export class BlogHomeComponent implements OnInit {
       this.totalCount = res.count;
 
       this.totalPages = Math.ceil(this.totalCount / this.pageSize);
+
       this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
 
       const filteredList = res.results;
@@ -59,16 +64,31 @@ export class BlogHomeComponent implements OnInit {
     });
   }
 
-  changePage(page: number) {
-    if (page < 1 || page > this.totalPages) {
-      return;
-    }
-    this.currentPage = page;
-    this.getList(page, this.pageSize);
-  }
+ /**
+  * The function "changePage" updates the current page number and calls a function to retrieve a list
+  * of items for the new page.
+  * @param {number} page - The `page` parameter is a number that represents the page number to be
+  * changed to.
+  * @returns If the condition `page < 1 || page > this.totalPages` is true, then nothing is being
+  * returned. Otherwise, the function `getList(page, this.pageSize)` is being called.
+  */
+
+
+  // changePage(page: number) {
+
+  //   if (page < 1 || page > this.totalPages) {
+  //     return;
+  //   }
+  //   this.currentPage = page;
+  //   this.getList(page, this.pageSize);
+  // }
+
+
+
 
   goToLogin() {
-    alert('Login to view the full post')
+    alert('Login to view the full post');
+    this.router.navigateByUrl('/login');
   }
 
 }

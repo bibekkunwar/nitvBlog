@@ -14,6 +14,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ApiService } from './service/api.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
     BlogComponent,
     BlogHomeComponent,
     CreatepostComponent,
-    BlogDetailComponent
+    BlogDetailComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,11 +36,17 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
     FormsModule,ReactiveFormsModule, CKEditorModule,
     NgxPaginationModule,
   ],
-  providers: [ApiService,  {
+  providers: [ApiService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true,
-  },],
+  },
+  // ApiService,{
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass:RefreshInterceptor,
+  //   multi: true
+  // }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

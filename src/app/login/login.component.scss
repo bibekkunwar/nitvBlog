@@ -1,0 +1,180 @@
+
+.navtop{
+  	margin:4rem 0 0 0;
+}
+
+.login-section{
+  height: calc(100vh - 72px);
+}
+
+.scroll {
+	width: 60px;
+	height: 60px;
+	border: 2px solid #333;
+	border-radius: 50%;
+	position: relative;
+	animation: down 1.5s infinite;
+	-webkit-animation: down 1.5s infinite;
+	&::before {
+		content: '';
+		position: absolute;
+		top: 15px;
+		left: 18px;
+		width: 18px;
+		height: 18px;
+		border-left: 2px solid #333;
+  	border-bottom: 2px solid #333;
+		transform: rotate(-45deg);
+	}
+}
+
+@keyframes down {
+	0% {
+		transform: translate(0);
+	}
+	20% {
+		transform: translateY(15px);
+	}
+	40% {
+		transform: translate(0);
+	}
+}
+
+@-webkit-keyframes down {
+	0% {
+		transform: translate(0);
+	}
+	20% {
+		transform: translateY(15px);
+	}
+	40% {
+		transform: translate(0);
+	}
+}
+// .modal-body {
+//   .account-title {
+//     font-weight: 700;
+//     font-size: 24px;
+//     line-height: 31px;
+//     color: #000000;
+//   }
+
+//   .modal-row {
+//     padding: 1px 47px;
+//   }
+
+//   .modal-left {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     .create-acc-btn {
+//       background: #2f6ce5;
+//       border-radius: 20px;
+//       width: 100%;
+//       padding: 15px 10px;
+//       color: white;
+//       margin-top: 20px;
+//       font-weight: 600;
+//       font-size: 14px;
+//       line-height: 16px;
+//       border: none;
+//     }
+
+//     .card {
+//       &-text {
+//         font-weight: 600;
+//         font-size: 14px;
+//         line-height: 16px;
+//         color: #000000;
+//       }
+//     }
+//   }
+
+  // .modal-right {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: flex-end;
+  //   position: relative;
+
+  //   span {
+  //     color: #2f6ce5;
+  //   }
+
+  //   img {
+  //     width: 86%;
+  //     margin-top: 78px;
+  //   }
+
+  //   .terms {
+  //     position: absolute;
+  //     bottom: 0;
+  //     font-weight: 500;
+  //     font-size: 11px;
+  //     line-height: 16px;
+  //     text-align: right;
+  //     letter-spacing: -0.008em;
+  //     color: #000000;
+  //     opacity: 0.6;
+  //   }
+  // }
+// }
+
+
+// .account{
+// display: flex;
+// align-items: center;
+// gap: 10px;
+// }
+
+// input {
+// padding: 10px;
+// background: #f7f8fa;
+// border: 1px solid #d9d9db;
+// border-radius: 2px 2px 0px 0px;
+// }
+
+// .log-in{
+// margin-left: 10px;
+// }
+
+// .w-450px {
+//   width: 446px;
+// }
+
+// .firstname {
+// border-top-right-radius: 0;
+// }
+// .lastname {
+// border-top-left-radius: 0;
+// }
+
+// .btn-closed {
+// position: absolute;
+// right: 0;
+// top: -45px;
+// width: 30px;
+// height: 30px;
+// background: white;
+// border-radius: 50%;
+// display: flex;
+// align-items: center;
+// justify-content: center;
+// cursor: pointer;
+// }
+
+
+// @media (max-width: 991.98px) {
+// .search{
+//   display: none;
+// }
+
+// .logo-img{
+//   width: 7rem;
+// }
+
+// .account{
+//   padding: 5px;
+//   margin: 0 1rem;
+// }
+
+// }

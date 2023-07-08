@@ -25,6 +25,11 @@ export class BlogComponent implements AfterViewInit, OnInit {
 
   constructor(private _apiService: ApiService,private router:Router) {
     if(localStorage.getItem('auth_token')){
+/* The line `this._apiService.authenticate(true)` is calling a method `authenticate()` from the
+`_apiService` instance. It is passing `true` as an argument to the `authenticate()` method. The
+purpose of this line is to authenticate the user by setting a flag or updating the authentication
+status in the `_apiService`. The exact implementation and functionality of the `authenticate()`
+method would be defined in the `ApiService` class. */
       this._apiService.authenticate(true)
       const encodedToken = JSON.parse(localStorage.getItem('auth_token') || '');
       const decodedToken: DecodedType = jwt_decode(encodedToken.refresh);
@@ -35,8 +40,8 @@ export class BlogComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.getList(this.pageNo, this.pageSize);
-
   }
+
 
   ngAfterViewInit(): void {
     (document.getElementById('All Posts') as HTMLElement).style.display =
@@ -79,9 +84,12 @@ export class BlogComponent implements AfterViewInit, OnInit {
     this.myposts = this.allMighty.filter(
       (item: any) => item.user_id === this.userId
     );
+    console.log(this.myposts)
 
     this.totalCountForMyPost=this.myposts.length
   }
+
+
 
 
   deletePost(id: number) {

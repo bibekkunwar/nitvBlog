@@ -5,31 +5,22 @@
         <button class="tablinks border" (click)="openTab($event, 'All Posts')">
           All Posts
         </button>
-
       </div>
-
     </div>
 
-    <div
-      class="d-flex align-items-center justify-content-between posts mt-3 d-none"
-    >
-      <strong>Posts</strong>
-
+    <div class="d-flex align-items-center justify-content-between posts mt-2">
       <div class="dropdown">
         <button
-          class="btn btn-secondary dropdown-toggle"
+          class="btn btn-secondary dropdown-toggle d-none"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-
         </button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">All</a></li>
           <li>
-            <a class="dropdown-item" href="#"
-              >My Post</a
-            >
+            <a class="dropdown-item" href="#">My Post</a>
           </li>
         </ul>
       </div>
@@ -39,8 +30,20 @@
       <div
         class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-7 col-xxl-7 col-left"
       >
-        <div id="All Posts" class="tabcontent" >
-          <div class="card mb-3" *ngFor="let item of allMighty |  paginate: { itemsPerPage: pageSize, currentPage: pageNo ,totalItems:totalCount} " (click)="goToLogin()">
+        <div id="All Posts" class="tabcontent">
+          <div
+            class="card mb-3 cursor-pointer "
+            *ngFor="
+              let item of allMighty
+                | paginate
+                  : {
+                      itemsPerPage: pageSize,
+                      currentPage: pageNo,
+                      totalItems: totalCount
+                    }
+            "
+            (click)="goToLogin()"
+          >
             <img src="{{ item.blog_header_image }}" />
             <div class="card-body">
               <!-- <h6>✍️ Article</h6> -->
@@ -52,7 +55,9 @@
               </p>
             </div>
           </div>
-          <pagination-controls (pageChange)="pageNo = $event;getList(pageNo,pageSize)"></pagination-controls>
+          <pagination-controls
+            (pageChange)="pageNo = $event; getList(pageNo, pageSize)"
+          ></pagination-controls>
         </div>
       </div>
     </div>

@@ -42,7 +42,7 @@
 
   <div class="form-group mb-4">
     <label for="description">Description</label>
-    <ckeditor [editor]="Editor" formControlName="blog_content"></ckeditor>
+    <ckeditor [editor]="Editor" id="description" formControlName="blog_content"></ckeditor>
   </div>
 
   <button type="submit" (click)="addPost()" class="btn btn-primary mb-4">

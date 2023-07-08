@@ -65,8 +65,10 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/register/`, newUsers);
   }
 
+  // data = localStorage.getItem('refresh');
+
   refreshKeyGeneerator(data: any) {
-    return this.http.post(`/api/v1/login/refresh`, data);
+    return this.http.post(`${this.apiUrl}/login/refresh`, data);
   }
 
   getPostDetailById(postId: number) {

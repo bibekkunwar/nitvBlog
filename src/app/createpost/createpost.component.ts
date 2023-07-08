@@ -35,9 +35,11 @@ export class CreatepostComponent {
       blog_header_image: new FormControl(),
     });
 
+   /* The code is retrieving the authentication token from the local storage and decoding it using the
+   `jwt-decode` library. */
     const encodedToken = JSON.parse(localStorage.getItem('auth_token') || '');
 
-    const decodedToken: any = jwt_decode(encodedToken.refresh);
+    const decodedToken: any = jwt_decode(encodedToken.access);
     this.userId = decodedToken.user_id;
     this.postId = +this.route.snapshot.params['postId'];
 
@@ -71,13 +73,11 @@ export class CreatepostComponent {
     if (this.postId) {
       this._apiService.updatePost(this.postId, data).subscribe(() => {
         alert('Updated successfully');
-        // navigation code here
         this.router.navigateByUrl('/bloglist');
       });
     } else {
       this._apiService.createPost(data).subscribe(() => {
         alert('Created successfully');
-        // navigation code here
         this.router.navigateByUrl('/bloglist');
       });
     }

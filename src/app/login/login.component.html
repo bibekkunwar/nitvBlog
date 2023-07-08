@@ -1,0 +1,42 @@
+
+<section class="login-section d-flex align-items-center justify-content-center" style=" background:linear-gradient(135deg, #172a74, #21a9af);
+background-color:#184e8e;">
+  <form [formGroup]="form" class="w-100">
+    <div class="container-fluid py-4">
+      <div class=" d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5 col-sm-12">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <p class=" row d-flex justify-content-center fw-bold fs-1 mb-2">Welcome to blog</p>
+
+            <div class="card-body p-4 text-center">
+
+              <h3 class="mb-5">Sign in</h3>
+
+              <div class="form-outline mb-4">
+                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" formControlName="username" />
+                <label class="form-label" for="typeEmailX-2">Email</label>
+                <div *ngIf="form.get('password')?.invalid && (form.get('password')?.touched)" class="text-danger">
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" formControlName="password" />
+                <label class="form-label" for="typePasswordX-2">Password</label>
+                <div *ngIf="form.get('password')?.invalid && (form.get('password')?.touched)" class="text-danger"></div>
+              </div>
+
+              <button  (click)="login()" class="btn btn-primary btn-lg btn-block" type="submit" [routerLink]='["bloglist"]'>
+                <i class="fa fa-sign-in px-2" aria-hidden="true"></i>
+                Login</button>
+
+              <hr class="my-4">
+              <button class="btn btn-lg btn-block btn-primary mb-2" type="button" routerLink="/register" style="background-color: #3b5998;"
+                type="submit"><i class="fa fa-user-plus px-2"></i>register</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </form>
+</section>
