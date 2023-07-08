@@ -25,7 +25,7 @@ export class CreatepostComponent {
     private location: Location,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
@@ -35,13 +35,19 @@ export class CreatepostComponent {
       blog_header_image: new FormControl(),
     });
 
-   /* The code is retrieving the authentication token from the local storage and decoding it using the
-   `jwt-decode` library. */
+    /* The code is retrieving the authentication token from the local storage and decoding it using the
+    `jwt-decode` library. */
     const encodedToken = JSON.parse(localStorage.getItem('auth_token') || '');
 
     const decodedToken: any = jwt_decode(encodedToken.access);
     this.userId = decodedToken.user_id;
     this.postId = +this.route.snapshot.params['postId'];
+
+    if (localStorage.getItem('auth_token')) {
+      const auth_token = JSON.parse(localStorage.getItem('auth_token') || '');
+      const refresh_token = auth_token.refresh as string;
+      this._apiService.refreshKeyGeneerator(refresh_token);
+    }
 
     this.createPost();
     if (this.postId) {
@@ -62,6 +68,11 @@ export class CreatepostComponent {
   }
 
   addPost() {
+    if (localStorage.getItem('auth_token')) {
+      const auth_token = JSON.parse(localStorage.getItem('auth_token') || '');
+      const refresh_token = auth_token.refresh as string;
+      this._apiService.refreshKeyGeneerator(refresh_token);
+    }
     const data: any = {
       id: this.postForm.value.id,
       blog_title: this.postForm.value.blog_title,

@@ -1,24 +1,26 @@
-   <!-- Page content-->
-   <div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-8">
-            <!-- Post content-->
-            <article class="d-flex flex-column mb-4">
-              <figure class=" text-center h-50 mb-4"><img class="img-fluid w-100 h-50 rounded " src= "{{ viewAll?.blog_header_image }}" />
-              </figure>
-                <header class="d-flex flex-column mb-4">
-                  <!-- Post title-->
-                  <h1>{{ viewAll?.blog_title }}</h1>
-                  <br>
-                  <h3 class="text-grey">{{ viewAll?.blog_summary}}</h3>
-                </header>
+<!-- Page content-->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <!-- Post content-->
+      <article class="d-flex flex-column mb-4">
+        <figure class=" text-center h-50 mb-4"><img class="img-fluid w-100 h-50 rounded "
+            src="{{ viewAll?.blog_header_image }}" />
+        </figure>
+        <header class="d-flex flex-column mb-4">
+          <!-- Post title-->
+          <h1>{{ viewAll?.blog_title }}</h1>
 
-              <!-- Preview image figure-->
+          <br>
+          <h3 class="text-grey">{{ viewAll?.blog_summary}}</h3>
+        </header>
+
+        <!-- Preview image figure-->
 
 
-              <p [innerHTML]="viewAll?.blog_content"></p>
-            </article>
-        </div>
-
+        <p [innerHTML]="viewAll?.blog_content"></p>
+      </article>
     </div>
+
+  </div>
 </div>

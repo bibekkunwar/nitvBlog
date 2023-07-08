@@ -16,9 +16,9 @@ export class AuthInterceptor implements HttpInterceptor {
   accessToken = '';
   refreshKeyToken!: string;
   refresh = false;
-  IgnoredUrls = [`${this._demoService.apiUrl}/list/`,`${this._demoService.apiUrl}/register/`];
+  IgnoredUrls = [`${this._demoService.apiUrl}/list/`, `${this._demoService.apiUrl}/register/`];
   constructor(private _demoService: ApiService,
-    private http: HttpClient) {}
+    private http: HttpClient) { }
 
   getAuthToken() {
     if (localStorage.getItem('auth_token')) {
@@ -55,12 +55,12 @@ export class AuthInterceptor implements HttpInterceptor {
             refresh: this.refreshKeyToken,
           };
 
-          this._demoService
-            .refreshKeyGeneerator(data)
-            .pipe(tap((res) => console.log('tap', res)))
-            .subscribe((res) => {
-              console.log('refresh', res);
-            });
+          // this._demoService
+          //   .refreshKeyGeneerator(this.refreshKeyToken)
+          //   .pipe(tap((res) => console.log('tap', res)))
+          //   .subscribe((res) => {
+          //     console.log('refresh', res);
+          //   });
 
           return this.http
             .post(
