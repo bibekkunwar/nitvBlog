@@ -10,9 +10,9 @@ export class ApiService {
 
   accessToken: string = '';
   refreshKeyToken: string = '';
-  isAuthenticated = new BehaviorSubject(false)
+  isAuthenticated = new BehaviorSubject(false);
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {}
 
   refreshToken(): Observable<any> {
     const refreshTokenUrl =
@@ -25,7 +25,7 @@ export class ApiService {
   }
 
   authenticate(value: boolean) {
-    this.isAuthenticated.next(value)
+    this.isAuthenticated.next(value);
   }
 
   login(data: { username: string; password: string }) {
@@ -65,16 +65,16 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}/register/`, newUsers);
   }
 
-  // data = localStorage.getItem('refresh');
-
   refreshKeyGeneerator(refresh: string) {
     const data = {
       refresh: refresh,
     };
-    return this.http.post<any>(`${this.apiUrl}/login/refresh/`, data).subscribe(data => {
-      // console.log(data);
-      localStorage.setItem('auth_token', JSON.stringify(data));
-    });
+    return this.http
+      .post<any>(`${this.apiUrl}/login/refresh/`, data)
+      .subscribe((data) => {
+        // console.log(data);
+        localStorage.setItem('auth_token', JSON.stringify(data));
+      });
   }
 
   getPostDetailById(postId: number) {
@@ -87,5 +87,11 @@ export class ApiService {
 
   private isLoggedIn: boolean = false;
 
+  storeToken(auth_token: any): void {
+    localStorage.setItem('auth_token', auth_token);
+  }
 
+  getStorageToken() {
+    localStorage.getItem('auth_token');
+  }
 }

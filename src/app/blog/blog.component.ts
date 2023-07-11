@@ -93,11 +93,11 @@ export class BlogComponent implements AfterViewInit, OnInit {
 
 
   deletePost(id: number) {
-    if (localStorage.getItem('auth_token')) {
-      const auth_token = JSON.parse(localStorage.getItem('auth_token') || '');
-      const refresh_token = auth_token.refresh as string;
-      this._apiService.refreshKeyGeneerator(refresh_token);
-    }
+    // if (localStorage.getItem('auth_token')) {
+    //   const auth_token = JSON.parse(localStorage.getItem('auth_token') || '');
+    //   const refresh_token = auth_token.refresh as string;
+    //   this._apiService.refreshKeyGeneerator(refresh_token);
+    // }
     const confirmed = confirm('are you sure? delete!!!');
     if (confirmed) {
       this._apiService.deletePost(id).subscribe({
