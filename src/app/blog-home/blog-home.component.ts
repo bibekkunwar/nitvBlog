@@ -53,7 +53,6 @@ export class BlogHomeComponent implements OnInit {
       this.totalPagesArray = Array.from({ length: this.totalPages }, (_, index) => index + 1);
 
       const filteredList = res.results;
-      console.log(filteredList)
       filteredList.map((item: any) => {
         const encodedUrl = item.blog_header_image?.split('media/')[1];
         const decodedUrl = decodeURIComponent(encodedUrl);
@@ -63,28 +62,6 @@ export class BlogHomeComponent implements OnInit {
       });
     });
   }
-
- /**
-  * The function "changePage" updates the current page number and calls a function to retrieve a list
-  * of items for the new page.
-  * @param {number} page - The `page` parameter is a number that represents the page number to be
-  * changed to.
-  * @returns If the condition `page < 1 || page > this.totalPages` is true, then nothing is being
-  * returned. Otherwise, the function `getList(page, this.pageSize)` is being called.
-  */
-
-
-  // changePage(page: number) {
-
-  //   if (page < 1 || page > this.totalPages) {
-  //     return;
-  //   }
-  //   this.currentPage = page;
-  //   this.getList(page, this.pageSize);
-  // }
-
-
-
 
   goToLogin() {
     alert('Login to view the full post');

@@ -22,7 +22,6 @@ export class BlogDetailComponent {
 
   ngOnInit(): void {
     this.postId = +this.route.snapshot.params['postId'];
-    // this.refreshAccessTokenIfAvailable();
     this.viewPost();
   }
 
@@ -36,13 +35,4 @@ export class BlogDetailComponent {
       this.viewAll = { ...res, blog_header_image: modifiedUrl };
     });
   }
-
-  // refreshAccessTokenIfAvailable() {
-
-  //   if (localStorage.getItem('auth_token')) {
-  //     const auth_token = JSON.parse(localStorage.getItem('auth_token') || '');
-  //     const refresh_token = auth_token.refresh as string;
-  //     this._apiService.refreshKeyGeneerator(refresh_token);
-  //   }
-  // }
 }

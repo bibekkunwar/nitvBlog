@@ -22,12 +22,12 @@ export class NavbarComponent {
    _isLoggedIn :boolean;
 
   constructor(private _apiService: ApiService, private router: Router, private cdr: ChangeDetectorRef) {
-    // if(localStorage.getItem('auth_token')){
-    //   this._isLoggedIn=true;
-    // }
 
     this._isLoggedIn = !!localStorage.getItem('auth_token');
 
+   /* The code `this.router.events.subscribe((event) => { ... })` is subscribing to the events emitted
+   by the Angular router. It listens for navigation events, specifically the `NavigationEnd` event,
+   which is emitted when a navigation is successfully completed. */
     this.router.events.subscribe((event) => {
       if(event instanceof NavigationEnd){
         this._isLoggedIn = !!localStorage.getItem('auth_token');

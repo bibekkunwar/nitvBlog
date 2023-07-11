@@ -31,9 +31,12 @@ import { RegisterComponent } from './register/register.component';
   ],
   imports: [
     BrowserModule,
+    CKEditorModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,ReactiveFormsModule, CKEditorModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CKEditorModule,
     NgxPaginationModule,
   ],
   providers: [ApiService, {
@@ -41,11 +44,6 @@ import { RegisterComponent } from './register/register.component';
     useClass: AuthInterceptor,
     multi: true,
   },
-  // ApiService,{
-  //   provide: HTTP_INTERCEPTORS,
-  //   useClass:RefreshInterceptor,
-  //   multi: true
-  // }
 ],
   bootstrap: [AppComponent]
 })

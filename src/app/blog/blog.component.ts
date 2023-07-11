@@ -1,3 +1,4 @@
+import ClassicEditor  from '@ckeditor/ckeditor5-build-classic';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import jwt_decode from 'jwt-decode';
@@ -12,6 +13,9 @@ interface DecodedType {
   styleUrls: ['./blog.component.scss'],
 })
 export class BlogComponent implements AfterViewInit, OnInit {
+
+  public Editor = ClassicEditor;
+
   allMighty: any[] = [];
   pageNo: number = 1;
   currentPage: number = 1;

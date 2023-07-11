@@ -71,6 +71,10 @@
 
 
         <div id="mypost" class="tabcontent">
+
+          <div *ngIf="myposts.length === 0" class="empty-list-message text-alignment-centre">
+           <h2>You'r list is currently empty</h2>
+          </div>
           <div class="card mb-3" *ngFor="
               let item of myposts
 
@@ -79,7 +83,7 @@
             <div class="card-body">
               <h6>✍️ Article</h6>
               <h5 class="card-title mt-3">
-                {{ item.blog_title }}
+               {{item.blog_title }}
               </h5>
               <p class="card-text">
                 {{ item.blog_summary }}
@@ -106,8 +110,8 @@
 
 
           </div>
-          <!--
-          <pagination-controls
+
+          <!-- <pagination-controls
             (pageChange)="pageNo = $event; getMyPosts()"
           ></pagination-controls> -->
         </div>

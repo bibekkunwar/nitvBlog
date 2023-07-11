@@ -37,7 +37,6 @@ export class AuthInterceptor implements HttpInterceptor {
       this.auth_token = JSON.parse(localStorage.getItem('auth_token') || '');
       this.accessToken = this.auth_token.access;
       this.refreshKeyToken = this.auth_token.refresh;
-      console.log('refesth key', this.refreshKeyToken);
     }
   }
 

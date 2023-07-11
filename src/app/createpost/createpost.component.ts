@@ -43,12 +43,6 @@ export class CreatepostComponent {
     this.userId = decodedToken.user_id;
     this.postId = +this.route.snapshot.params['postId'];
 
-    // if (localStorage.getItem('auth_token')) {
-    //   const auth_token = JSON.parse(localStorage.getItem('auth_token') || '');
-    //   const refresh_token = auth_token.refresh as string;
-    //   this._apiService.refreshKeyGeneerator(refresh_token);
-    // }
-
     this.createPost();
     if (this.postId) {
       this._apiService.getPostDetailById(this.postId).subscribe((res) => {
@@ -68,11 +62,6 @@ export class CreatepostComponent {
   }
 
   addPost() {
-    // if (localStorage.getItem('auth_token')) {
-    //   const auth_token = JSON.parse(localStorage.getItem('auth_token') || '');
-    //   const refresh_token = auth_token.refresh as string;
-    //   this._apiService.refreshKeyGeneerator(refresh_token);
-    // }
     const data: any = {
       id: this.postForm.value.id,
       blog_title: this.postForm.value.blog_title,

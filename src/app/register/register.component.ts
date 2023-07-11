@@ -41,7 +41,6 @@ export class RegisterComponent {
       last_name: this.form.value.lastName,
 
     };
-    // console.log(newUsers);
 
     this._apiService.register(newUsers)
     .subscribe({
