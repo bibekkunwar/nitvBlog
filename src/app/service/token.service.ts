@@ -5,37 +5,23 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TokenService {
-  url = "https://blog-api-django-rest-framework-production.up.railway.app/api/v1/login/"
 
   constructor(private http: HttpClient) {
 
    }
 
-   proceedLogin(userCred: any){
-    return this.http.post(this.url, userCred);
-   }
 
-
+  /**
+   * The function checks if the user is logged in by checking if the 'auth_token' item exists in the
+   * localStorage.
+   * @returns a boolean value. It will return true if the 'auth_token' item is present in the
+   * localStorage, indicating that the user is logged in. Otherwise, it will return false.
+   */
    isLoggedIn(){
     return localStorage.getItem('auth_token')!=null;
    }
 
-   getToken(){
-    return localStorage.getItem('auth_token') || '';
-   }
 
-
-   setAccessToken(token: string): void {
-    localStorage.setItem('auth_token', token);
-  }
-
-  setRefreshToken(token: string): void {
-    localStorage.setItem('refresh', token);
-  }
-
-  getRefreshToken(): string {
-    return localStorage.getItem('refresh_oken') || '';
-  }
 
 
 

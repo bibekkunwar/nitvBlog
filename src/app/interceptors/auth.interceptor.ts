@@ -45,7 +45,12 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
+
+
     // Check if the request URL is in the ignored URLs list
+   /* The code `const isIgnoredUrl = this.IgnoredUrls.some((url) => request.url.includes(url));` is
+   checking if the request URL is present in the `IgnoredUrls` array. */
+
     const isIgnoredUrl = this.IgnoredUrls.some((url) =>
       request.url.includes(url)
     );
@@ -53,6 +58,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (isIgnoredUrl) {
       return next.handle(request);
     }
+
 
     this.getAuthToken();
     const req = request.clone({
@@ -71,12 +77,14 @@ export class AuthInterceptor implements HttpInterceptor {
             .pipe(
               switchMap((res: any) => {
                 localStorage.removeItem('auth_token');
+
                 const data = {
                   user_email: '',
                   refresh: res.refresh,
                   access: res.access,
                 };
                 localStorage.setItem('auth_token', JSON.stringify(data));
+
                 return next.handle(
                   request.clone({
                     setHeaders: {
@@ -89,6 +97,7 @@ export class AuthInterceptor implements HttpInterceptor {
         }
         if (err.status === 403) {
           localStorage.removeItem('auth_token');
+          alert('your session time out, login')
           this.router.navigate(['login']);
         }
         this.refresh = false;

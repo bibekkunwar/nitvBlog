@@ -94,4 +94,7 @@ export class ApiService {
   getStorageToken() {
     localStorage.getItem('auth_token');
   }
+
+
+
 }

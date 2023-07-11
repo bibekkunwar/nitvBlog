@@ -7,6 +7,7 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './shared/auth.guard';
+import { BannnerComponent } from './bannner/bannner.component';
 
 const routes: Routes = [
   // {path:'',component:}
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'updatepost/:postId',component:CreatepostComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'banner', component: BannnerComponent}
 ];
 
 @NgModule({
